@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/25 13:04:51 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/08/25 13:04:51 by nsomjaip         ###   ########.fr       */
+/*   Created: 2026/08/25 22:56:54 by nsomjaip          #+#    #+#             */
+/*   Updated: 2026/08/25 22:56:54 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_atoi(const char *nptr)
 {
-	size_t	i;
+	int	i;
+	int	result;
+	int	sign;
 
 	i = 0;
-	while (i < n && s1[i] == s2[i])
+	result = 0;
+	sign = 1;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == ' ')
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if(nptr[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		result = (result * 10) + (nptr[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }

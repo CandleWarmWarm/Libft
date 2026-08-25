@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/25 13:04:51 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/08/25 13:04:51 by nsomjaip         ###   ########.fr       */
+/*   Created: 2026/08/25 17:04:00 by nsomjaip          #+#    #+#             */
+/*   Updated: 2026/08/25 17:04:00 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
+	unsigned char	*str;
+	size_t			i;
 
 	i = 0;
-	while (i < n && s1[i] == s2[i])
+	str = s;
+	while (i < n)
+	{
+		str[i] = '\0';
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
 }
