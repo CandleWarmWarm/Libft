@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_strlcpy(char *dst, const char *src, int size)
+size_t	ft_strlcpy(char *dst, const char *src, int size)
 {
 	int	i;
 

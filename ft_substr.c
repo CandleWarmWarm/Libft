@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/24 17:31:03 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/08/24 17:32:05 by nsomjaip         ###   ########.fr       */
+/*   Created: 2026/08/25 15:49:30 by nsomjaip          #+#    #+#             */
+/*   Updated: 2026/08/25 15:49:30 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned char	*str;
+	size_t	i;
+	char	*sub;
 
-	str = s;
-	while (n > 0)
-	{
-		*str = (unsigned char)c;
-		str++;
-		n--;
-	}
-	return (s);
+	sub = malloc(sizeof(char) * len + 1);
+	if (sub == NULL)
+		return (NULL);
 }
