@@ -16,21 +16,21 @@ static int	word_count(char *s, char limit)
 {
 	int	i;
 	int	count;
-	
+
 	i = 0;
 	count = 0;
 	while (s[i] && s[i] == limit)
 		i++;
 	while (s[i])
 	{
-		if (s[i] != limit && (s[i-1] == limit || i == 0))
+		if (s[i] != limit && (s[i - 1] == limit || i == 0))
 			count++;
 		i++;
 	}
 	return (count);
 }
 
-static int	fill_box(char **box,const char *s, char c)
+static int	fill_box(char **box, const char *s, char c)
 {
 	int	end;
 	int	i;
@@ -53,12 +53,12 @@ static int	fill_box(char **box,const char *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	int	i;
-	int	n_box;
-	char **box;
-	int len;
+	int		i;
+	int		n_box;
+	char	**box;
+	int		len;
 
-	box = malloc (sizeof(char *) * (word_count(s,c) + 1));
+	box = malloc(sizeof(char *) * (word_count(s, c) + 1));
 	if (box == NULL)
 		return (NULL);
 	i = 0;
@@ -67,7 +67,7 @@ char	**ft_split(char const *s, char c)
 	{
 		while (s[i] && s[i] == c)
 			i++;
-		len = fill_box(&box[n_box],&s[i],c);
+		len = fill_box(&box[n_box], &s[i], c);
 		if (len == -1)
 			return (NULL);
 		n_box++;

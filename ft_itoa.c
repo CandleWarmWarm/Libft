@@ -35,22 +35,22 @@ static void	rev_itoa_str(char **str, long n, int sign, int end)
 	i = 0;
 	while (n > 0)
 	{
-		(* str)[i] = (n % 10) + '0';
+		(*str)[i] = (n % 10) + '0';
 		n /= 10;
 		i++;
 	}
 	if (sign < 0)
 	{
-		(* str)[i] = '-';
+		(*str)[i] = '-';
 		i++;
 	}
-	(* str)[i] = '\0';
+	(*str)[i] = '\0';
 	i = 0;
 	while (i < end)
 	{
-		temp = (* str)[i];
-		(* str)[i] = (* str)[end];
-		(* str)[end] = temp;
+		temp = (*str)[i];
+		(*str)[i] = (*str)[end];
+		(*str)[end] = temp;
 		i++;
 		end--;
 	}
@@ -58,8 +58,8 @@ static void	rev_itoa_str(char **str, long n, int sign, int end)
 
 static void	zero_case(char **str)
 {
-	(* str)[0] = '0';
-	(* str)[1] = '\0';
+	(*str)[0] = '0';
+	(*str)[1] = '\0';
 }
 
 char	*ft_itoa(int n)
@@ -68,7 +68,7 @@ char	*ft_itoa(int n)
 	int		digit;
 	int		sign;
 	long	numb;
-	
+
 	sign = 1;
 	numb = n;
 	if (numb < 0)
