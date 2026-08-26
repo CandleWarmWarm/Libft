@@ -23,7 +23,7 @@ int	ft_atoi(const char *nptr)
 		i++;
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		if(nptr[i] == '-')
+		if (nptr[i] == '-')
 			sign *= -1;
 		i++;
 	}

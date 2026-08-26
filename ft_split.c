@@ -1,0 +1,88 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/26 17:42:43 by nsomjaip          #+#    #+#             */
+/*   Updated: 2026/08/26 17:42:43 by nsomjaip         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+static int	word_count(char *s, char limit)
+{
+	int	i;
+	int	count;
+	
+	i = 0;
+	count = 0;
+	while (s[i] && s[i] == limit)
+		i++;
+	while (s[i])
+	{
+		if (s[i] != limit && (s[i-1] == limit || i == 0))
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+static int	fill_box(char **box,const char *s, char c)
+{
+	int	end;
+	int	i;
+
+	i = 0;
+	end = 0;
+	while (s[end] && s[end] != c)
+		end++;
+	*box = malloc(sizeof(char) * (end + 1));
+	if (*box == NULL)
+		return (-1);
+	while (i < end)
+	{
+		(*box)[i] = s[i];
+		i++;
+	}
+	(*box)[i] = '\0';
+	return (i);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	int	i;
+	int	n_box;
+	char **box;
+	int len;
+
+	box = malloc (sizeof(char *) * (word_count(s,c) + 1));
+	if (box == NULL)
+		return (NULL);
+	i = 0;
+	n_box = 0;
+	while (s[i])
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		len = fill_box(&box[n_box],&s[i],c);
+		if (len == -1)
+			return (NULL);
+		n_box++;
+		i += len;
+	}
+	box[n_box] = NULL;
+	return (box);
+}
+
+// static void	free_all(char **box, int n_box)
+// {
+// 	while (n_box > 0)
+// 	{
+// 		n_box--;
+// 		free(box[n_box]);
+// 	}
+// 	free(box);
+// }
