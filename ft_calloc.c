@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/25 17:37:31 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/08/25 17:37:31 by nsomjaip         ###   ########.fr       */
+/*   Created: 2026/08/28 16:54:51 by nsomjaip          #+#    #+#             */
+/*   Updated: 2026/08/28 16:54:51 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
+void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	void	*cal;
 
-	d = dst;
-	s = src;
-	if (d < s)
-	{
-		i = 0;
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	}
-	else
-	{
-		i = n - 1;
-		while (i > 0)
-		{
-			d[i] = s[i];
-			i--;
-		}
-	}
-	return (dst);
+	if (count == 0 || size == 0)
+		return (NULL);
+	if (count > SIZE_MAX / size)
+		return (NULL);
+	cal = malloc(count * size);
+	if (cal == NULL)
+		return (NULL);
+	ft_bzero(cal, (size * count));
+	return (cal);
 }

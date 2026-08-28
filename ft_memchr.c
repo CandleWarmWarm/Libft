@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/25 17:37:31 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/08/25 17:37:31 by nsomjaip         ###   ########.fr       */
+/*   Created: 2026/08/27 18:37:12 by nsomjaip          #+#    #+#             */
+/*   Updated: 2026/08/27 18:37:12 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	unsigned char	*d;
-	unsigned char	*s;
-	size_t			i;
+	size_t				i;
+	const unsigned char	*str;
 
-	d = dst;
-	s = src;
-	if (d < s)
+	str = s;
+	i = 0;
+	while (i < n)
 	{
-		i = 0;
-		while (i < n)
-		{
-			d[i] = s[i];
-			i++;
-		}
+		if (str[i] == c)
+			return ((void *)&str[i]);
+		i++;
 	}
-	else
-	{
-		i = n - 1;
-		while (i > 0)
-		{
-			d[i] = s[i];
-			i--;
-		}
-	}
-	return (dst);
+	return (NULL);
 }
