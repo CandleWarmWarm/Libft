@@ -6,24 +6,26 @@
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 09:54:16 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/08/25 09:54:16 by nsomjaip         ###   ########.fr       */
+/*   Updated: 2026/08/29 18:46:33 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	int				i;
+	unsigned char	c_check;
 
 	i = 0;
+	c_check = c;
 	while (s[i])
 	{
-		if (s[i] == c)
-			return (&s[i]);
+		if ((unsigned char)s[i] == c_check)
+			return ((char *)&s[i]);
 		i++;
 	}
-	if (c == '\0')
-		return (&s[i]);
+	if (c_check == '\0')
+		return ((char *)&s[i]);
 	return (NULL);
 }

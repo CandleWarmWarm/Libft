@@ -6,7 +6,7 @@
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 11:20:27 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/08/25 11:20:27 by nsomjaip         ###   ########.fr       */
+/*   Updated: 2026/08/29 18:47:16 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	int				i;
+	unsigned char	c_check;
 
 	i = 0;
+	c_check = c;
 	while (s[i])
 		i++;
 	while (i >= 0)
 	{
-		if (s[i] == c)
-			return (&s[i]);
+		if ((unsigned char)s[i] == c_check)
+			return ((char *)&s[i]);
 		i--;
 	}
 	return (NULL);

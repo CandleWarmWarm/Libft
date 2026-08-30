@@ -6,7 +6,7 @@
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 18:37:12 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/08/27 18:37:12 by nsomjaip         ###   ########.fr       */
+/*   Updated: 2026/08/29 21:09:18 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (str[i] == c)
+		if (str[i] == (unsigned char)c)
 			return ((void *)&str[i]);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/29 00:23:14 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/08/29 00:23:14 by nsomjaip         ###   ########.fr       */
+/*   Updated: 2026/08/29 17:04:24 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd,&c,1);
+	write(fd, &c, 1);
 }

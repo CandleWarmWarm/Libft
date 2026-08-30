@@ -6,7 +6,7 @@
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/28 16:54:51 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/08/28 16:54:51 by nsomjaip         ###   ########.fr       */
+/*   Updated: 2026/08/29 21:42:51 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*cal;
 
 	if (count == 0 || size == 0)
-		return (NULL);
+		return (malloc(1));
 	if (count > SIZE_MAX / size)
 		return (NULL);
 	cal = malloc(count * size);
