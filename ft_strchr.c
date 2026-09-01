@@ -19,6 +19,8 @@ char	*ft_strchr(const char *s, int c)
 
 	i = 0;
 	c_check = c;
+	if (s == NULL)
+		return (NULL);
 	while (s[i])
 	{
 		if ((unsigned char)s[i] == c_check)

@@ -33,6 +33,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		i;
 	char	*trimmed;
 
+	if (s1 == NULL || set == NULL)
+		return (NULL);
 	start = 0;
 	i = 0;
 	while (s1[start] && check_set(s1[start], set))

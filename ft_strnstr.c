@@ -17,7 +17,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (little == NULL || len == 0)
+	if (big == NULL)
+		return (NULL);
+	if (little == NULL || little[0] == '\0')
 		return (big);
 	i = 0;
 	while (big[i] && i < len)
@@ -29,5 +31,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			return (&big[i]);
 		i++;
 	}
+	// len == 0 will skip all loop
 	return (NULL);
 }

@@ -23,7 +23,7 @@ static int	word_count(const char *s, char limit)
 		i++;
 	while (s[i])
 	{
-		if (s[i] != limit && (s[i - 1] == limit || i == 0))
+		if (s[i] != limit && (i == 0 || s[i - 1] == limit))
 			count++;
 		i++;
 	}
@@ -51,7 +51,7 @@ static int	fill_box(char **box, const char *s, char c)
 	return (i);
 }
 
-static char	**free_box(char **box, int n_box)
+static void	free_box(char **box, int n_box)
 {
 	int	i;
 
@@ -62,19 +62,14 @@ static char	**free_box(char **box, int n_box)
 		i++;
 	}
 	free(box);
-	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+static int	fill_words(char **box, char const *s, char c)
 {
-	int		i;
-	int		n_box;
-	char	**box;
-	int		len;
+	int	i;
+	int	n_box;
+	int	len;
 
-	box = malloc(sizeof(char *) * (word_count(s, c) + 1));
-	if (box == NULL)
-		return (NULL);
 	i = 0;
 	n_box = 0;
 	while (s[i])
@@ -85,11 +80,28 @@ char	**ft_split(char const *s, char c)
 		{
 			len = fill_box(&box[n_box], &s[i], c);
 			if (len == -1)
-				return (free_box(box, n_box));
+			{
+				free_box(box, n_box);
+				return (-1);
+			}
 			n_box++;
 			i += len;
 		}
 	}
 	box[n_box] = NULL;
+	return (0);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**box;
+
+	if (s == NULL)
+		return (NULL);
+	box = malloc(sizeof(char *) * (word_count(s, c) + 1));
+	if (box == NULL)
+		return (NULL);
+	if (fill_words(box, s, c) == -1)
+		return (NULL);
 	return (box);
 }
