@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsomjaip <nsomjaip@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/25 15:49:30 by nsomjaip          #+#    #+#             */
-/*   Updated: 2026/08/25 15:49:30 by nsomjaip         ###   ########.fr       */
+/*   Created: 2026/09/02 21:29:14 by nsomjaip          #+#    #+#             */
+/*   Updated: 2026/09/02 21:29:14 by nsomjaip         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-	char	*sub;
+	t_list	*new_list;
+	t_list	*new_node;
+	void	*content;
 
-	if (s == NULL)
+	if (lst == NULL || f == NULL || del == NULL)
 		return (NULL);
-	if ((size_t)start > ft_strlen(s))
-		len = 0;
-	else if (len > ft_strlen(s) - (size_t)start)
-		len = ft_strlen(s) - (size_t)start;
-	sub = malloc(sizeof(char) * (len + 1));
-	if (sub == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len)
+	new_list = NULL;
+	while (lst)
 	{
-		sub[i] = s[i + (size_t)start];
-		i++;
+		content = f(lst->content);
+		new_node = ft_lstnew(content);
+		if (new_node == NULL)
+		{
+			del(content);
+			ft_lstclear(&new_list, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_list, new_node);
+		lst = lst->next;
 	}
-	sub[i] = '\0';
-	return (sub);
+	return (new_list);
 }
