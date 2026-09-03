@@ -77,7 +77,7 @@ memory allocation helpers (`ft_calloc`, `ft_strdup`), string manipulation
 `ft_strmapi`, `ft_striteri`), and output functions
 (`ft_putchar_fd`, `ft_putstr_fd`, `ft_putendl_fd`, `ft_putnbr_fd`).
 
-**Part 3 — Bonus: linked list functions**
+**Part 3 — linked list functions**
 A minimal linked list implementation (`t_list`) and its operations:
 `ft_lstnew`, `ft_lstadd_front`, `ft_lstsize`, `ft_lstlast`, `ft_lstadd_back`,
 `ft_lstdelone`, `ft_lstclear`, `ft_lstiter`, `ft_lstmap`.
